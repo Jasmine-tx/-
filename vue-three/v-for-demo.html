@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>电话号码监测</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <input type="text" v-model="shuju">
+        <div v-for="(te,index) in telephone" :key="index" v-if="te.num == shuju">
+            <p>这是来自"{{te.country}}"的电话号码，首都为{{te.capital}}</p>
+        </div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    shuju: '',
+                    telephone: [
+                        {
+                            "num": 1,
+                            "country": "美利坚",
+                            "capital": "华盛顿"
+                        },
+                        {
+                            "num": 44,
+                            "country": "英格兰",
+                            "capital": "伦敦"
+                        },
+                        {
+                            "num": 86,
+                            "country": "中国",
+                            "capital": "北京"
+                        },
+                    ]
+                }
+            },
+            methods: {
+
+            },
+        });
+
+    </script>
+
+</body>
+
+</html>
