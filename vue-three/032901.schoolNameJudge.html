@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户指定月份天数输出</title>
+    <script src="./vue.js"></script>
+</head>
+
+<body>
+
+    <div id="app">
+        <p>请输入月份</p>
+        <input type="text" v-model='month' @blur='blur'><br />
+        <div v-if="day != 0">
+            本月有“{{day}}”天
+        </div>
+    </div>
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    month: '',
+                    day: 0,
+                    month03: [2],
+                    month02: [4, 6, 9, 11],
+                    month01: [1, 3, 5, 7, 8, 10, 12]
+
+                }
+            },
+            methods: {
+                blur() {
+                    for (const key in this.month01) {
+                        if (this.month == this.month01[key]) {
+                            this.day = 31
+                            break
+                        }
+                    }
+
+                    for (const key in this.month02) {
+                        if (this.month == this.month02[key]) {
+                            this.day = 30
+                            break
+                        }
+                    }
+
+                    if (this.month == 2) {
+                        this.day = 28
+                    }
+
+
+
+                }
+            },
+        })
+
+    </script>
+
+</body>
+
+</html>
