@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>双色球号码随机生成器</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="dian" v-if="monitor != 7">摇球</button><br>
+        红球：[{{number}}] <br>
+        篮球：[{{number01}}]
+    </div>
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    number: [],
+                    number01: '',
+                    monitor: 0,
+                }
+            },
+            methods: {
+                dian() {
+
+                    if (this.monitor < 6) {
+                        this.number[this.monitor] = Math.round(Math.random() * 33)
+                        this.monitor++
+                    } else {
+                        this.number01 = Math.round(Math.random() * 33)
+                        this.monitor++
+                    }
+
+                }
+
+
+
+            },
+        })
+    </script>
+
+</body>
+
+</html>
